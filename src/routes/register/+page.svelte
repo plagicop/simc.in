@@ -1,10 +1,31 @@
 <script>
+	import { authHandlers } from "$lib/stores";
+	import toast from "svelte-french-toast";
+
+
     let name = ''
     let email = ''
     let password = ''
     let cpassword = ''
     let loginerremail = false
     let loginerrpwd = false
+
+    const handleRegister = async () => {
+        if (email === "") {
+            loginerremail = true
+            toast.error("Please enter your email")
+            return
+        } else if (password === "" || password !== cpassword) {
+            loginerrpwd = true
+            toast.error("Please enter your password")
+            return
+        } else if (name === "" || name.length < 3 ) {
+            loginerrpwd = true
+            {name.length < 3 ? toast.error("Name should be atleast 3 characters") : toast.error("Please enter your name")}
+            return
+        }
+        await authHandlers.register(name, email, password)
+    }
 </script>
 
 <div class="flex flex-col w-full items-center justify-center h-full mt-8">
@@ -246,6 +267,7 @@
     <div class="container bg-white shadow flex flex-col sm:max-w-screen-sm px-6 py-6 items-center rounded-lg">
         <form class="w-full" on:submit={ e => {
             e.preventDefault()
+
         }} autocomplete="off">
             <h1 class="text-2xl font-semibold text-gray-800 sm:text-3xl text-center">Register</h1>
             <label for="pwd" class="mb-3 ml-1 block text-base font-medium text-gray-700 mt-8">Name</label>

@@ -1,8 +1,33 @@
-<script>
-	let email = '';
-	let password = '';
-	let loginerremail = false;
-	let loginerrpwd = false;
+<script lang="ts">
+	import { authHandlers } from "$lib/stores";
+
+
+	let email: string = '';
+	let password: string = '';
+	let loginerremail: boolean = false;
+	let loginerrpwd: boolean = false;
+
+    const handleLogin = async () => {
+        if (email === '') {
+            loginerremail = true;
+        } else {
+            loginerremail = false;
+        }
+
+        if (password === '') {
+            loginerrpwd = true;
+        } else {
+            loginerrpwd = false;
+        }
+
+        if (email && password) {
+            try {
+                await authHandlers.login(email, password);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    };
 </script>
 
 <div class="flex flex-col w-full h-full items-center justify-center mt-16">
@@ -244,7 +269,7 @@
 	<div
 		class="container bg-white shadow flex flex-col sm:max-w-screen-sm px-6 py-6 pb-10 items-center rounded-lg"
 	>
-		<form class="w-full">
+		<form class="w-full" on:submit={handleLogin}>
 			<h1 class="text-2xl font-semibold text-gray-800 sm:text-3xl text-center">Log In</h1>
 			<label for="email" class="mb-3 ml-1 block text-base font-medium text-gray-700 mt-8">
                 Email address
