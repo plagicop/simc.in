@@ -36,7 +36,7 @@
     };
 </script>
 
-<div class="flex flex-col w-full h-full items-center justify-center mt-16">
+<div class="flex flex-col w-full h-full items-center justify-center">
     <Robo />
 	<div
 		class="container bg-white shadow flex flex-col sm:max-w-screen-sm px-6 py-6 pb-10 items-center rounded-lg"

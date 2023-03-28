@@ -32,7 +32,7 @@
     }
 </script>
 
-<div class="flex flex-col w-full items-center justify-center h-full mt-8">
+<div class="flex flex-col w-full items-center justify-center h-full">
     <!-- <Logo classes="w-64 mx-auto mb-8" /> -->
     <Robo />
     <div class="container bg-white shadow flex flex-col sm:max-w-screen-sm px-6 py-6 items-center rounded-lg">
