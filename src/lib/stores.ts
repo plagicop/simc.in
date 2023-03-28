@@ -11,12 +11,14 @@ isLeftBarCollapsed.subscribe((value) => {
         window.localStorage.setItem("isLeftBarCollapsed", value.toString());
 });
 
+export const isLoading = writable<boolean>(false);
+
 export const authStore = writable<{
     uid: string;
     displayName: string | null;
     email: string | null;
     emailVerified: boolean;
-} | null>(null);
+} | null >(null);
 
 export const authHandlers = {
     login: async (email: string, password: string) => {
