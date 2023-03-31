@@ -3,7 +3,7 @@
 	import { authStore, isLoading } from '$lib/stores';
 	import { fade } from 'svelte/transition';
 	import { isLeftBarCollapsed } from '../../lib/stores';
-	import './style.scss';
+	import './layoutstyle.scss';
 
 	$: $authStore === null && goto('login');
 	isLoading.set(false);
@@ -111,11 +111,7 @@
 			</nav>
 		</div>
 	</aside>
-	
-	<div class="bg-black w-full">
-		<slot />
-	</div>
 
-	<div class="">
-	</div>
+	<slot />
+	
 </div>

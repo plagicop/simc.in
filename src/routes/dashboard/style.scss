@@ -1,45 +1,17 @@
-.main{
-    grid-template-columns: min-content 1fr;
-    
-    .leftbar {
-        @apply w-64 transition-all duration-300 ease-in-out;
-    
-        &.collapsed {
-            @apply w-16 px-3;
-    
-            .logo {
-                @apply hidden;
-            }
-    
-            .profile {
-                img {
-                    @apply w-8 h-8 transition-all duration-300 ease-in-out;
-                }
-    
-                h4,
-                p {
-                    @apply hidden transition-all duration-300 ease-in-out;
-                }
-            }
-    
-            nav {
-                .route {
-                    @apply px-1 justify-center;
-    
-                    span {
-                        @apply hidden transition-all duration-300 ease-in-out;
-                    }
-                }
-            }
-        }
-    
-        .route {
-            @apply flex items-center px-4 py-2 mt-4 text-gray-600 transition-all duration-300 transform rounded-lg cursor-pointer hover:bg-gray-100 hover:text-gray-700;
-    
-            &.active {
-                @apply text-gray-700 bg-gray-100;
-            }
-        }
-    }
-}
+.dashmain {
+	grid-template-columns: 1fr 1fr;
 
+	.upload-btn {
+		@apply flex gap-4 justify-center items-center w-fit px-6 py-3 text-sm font-medium tracking-wide text-gray-600 capitalize transition-all duration-300 border border-indigo-500 rounded-lg hover:bg-indigo-400 hover:text-white focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-50;
+
+        svg {
+            @apply stroke-current;
+        }
+
+        &:hover {
+            svg {
+                @apply stroke-white;
+            }
+        }
+	}
+}
