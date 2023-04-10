@@ -3,8 +3,9 @@
 	import { authHandlers, authStore, isLoading } from "$lib/stores";
 	import toast from "svelte-french-toast";
 	import Robo from "../../components/Robo.svelte";
+	import { onMount } from "svelte";
 
-    $: $authStore && goto('dashboard');
+    $: $authStore && onMount(() => goto("/dashboard"));
     isLoading.set(false);
 
     let name = ''

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
 	import { authHandlers, authStore, isLoading } from "$lib/stores";
+	import { onMount } from "svelte";
 	import Robo from "../../components/Robo.svelte";
 
 	let email: string = '';
@@ -8,7 +9,7 @@
 	let loginerremail: boolean = false;
 	let loginerrpwd: boolean = false;
 
-    $: $authStore && goto('dashboard');
+    $: $authStore && onMount(() => goto("/dashboard"));
     isLoading.set(false);
 
     const handleLogin = async () => {

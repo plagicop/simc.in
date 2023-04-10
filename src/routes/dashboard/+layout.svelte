@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { authStore, isLoading } from '$lib/stores';
-	import { fade } from 'svelte/transition';
 	import { isLeftBarCollapsed } from '../../lib/stores';
 	import './layoutstyle.scss';
+	import { onMount } from 'svelte';
 
-	$: $authStore === null && goto('login');
+	$: $authStore === null && onMount(() => goto('/login'));
 	isLoading.set(false);
 
 	let leftbarcollapsed: boolean
