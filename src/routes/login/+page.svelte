@@ -1,52 +1,52 @@
 <script lang="ts">
-	import { goto } from "$app/navigation";
-	import { authHandlers, authStore, isLoading } from "$lib/stores";
-	import { onMount } from "svelte";
-	import Robo from "../../components/Robo.svelte";
+	import { goto } from '$app/navigation';
+	import { authHandlers, authStore, isLoading } from '$lib/stores';
+	import { onMount } from 'svelte';
+	import Robo from '../../components/Robo.svelte';
 
 	let email: string = '';
 	let password: string = '';
 	let loginerremail: boolean = false;
 	let loginerrpwd: boolean = false;
 
-    $: $authStore && onMount(() => goto("/dashboard"));
-    isLoading.set(false);
+	$: $authStore && onMount(() => goto('/dashboard'));
+	isLoading.set(false);
 
-    const handleLogin = async () => {
-        isLoading.set(true)
-        if (email === '') {
-            loginerremail = true;
-        } else {
-            loginerremail = false;
-        }
+	const handleLogin = async () => {
+		isLoading.set(true);
+		if (email === '') {
+			loginerremail = true;
+		} else {
+			loginerremail = false;
+		}
 
-        if (password === '') {
-            loginerrpwd = true;
-        } else {
-            loginerrpwd = false;
-        }
+		if (password === '') {
+			loginerrpwd = true;
+		} else {
+			loginerrpwd = false;
+		}
 
-        if (email && password) {
-            try {
-                await authHandlers.login(email, password);
-            } catch (error) {
-                console.log(error);
-            }
-        }
-        isLoading.set(false)
-    };
+		if (email && password) {
+			try {
+				await authHandlers.login(email, password);
+			} catch (error) {
+				console.log(error);
+			}
+		}
+		isLoading.set(false);
+	};
 </script>
 
 <div class="flex flex-col w-full h-full items-center justify-center">
-    <Robo />
+	<Robo />
 	<div
 		class="container bg-white shadow flex flex-col sm:max-w-screen-sm px-6 py-6 pb-10 items-center rounded-lg"
 	>
 		<form class="w-full" on:submit={handleLogin}>
 			<h1 class="text-2xl font-semibold text-gray-800 sm:text-3xl text-center">Log In</h1>
 			<label for="email" class="mb-3 ml-1 block text-base font-medium text-gray-700 mt-8">
-                Email address
-            </label>
+				Email address
+			</label>
 			<div class="relative flex items-center mt-1">
 				<span class="absolute">
 					<svg

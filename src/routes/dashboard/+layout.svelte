@@ -8,9 +8,9 @@
 	$: $authStore === null && onMount(() => goto('/login'));
 	isLoading.set(false);
 
-	let leftbarcollapsed: boolean
+	let leftbarcollapsed: boolean;
 
-	$: leftbarcollapsed = $isLeftBarCollapsed ? true : false
+	$: leftbarcollapsed = $isLeftBarCollapsed ? true : false;
 </script>
 
 <div class="grid main">
@@ -23,7 +23,7 @@
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<div
 				class="w-full flex justify-center p-2 hover:bg-gray-100 rounded-lg cursor-pointer"
-				on:click={() => (isLeftBarCollapsed.set(!leftbarcollapsed))}
+				on:click={() => isLeftBarCollapsed.set(!leftbarcollapsed)}
 			>
 				<svg
 					class=""
@@ -47,7 +47,7 @@
 				<!-- svelte-ignore a11y-click-events-have-key-events -->
 				<div
 					class="flex justify-center p-2 hover:bg-gray-100 rounded-lg cursor-pointer"
-					on:click={() => (isLeftBarCollapsed.set(!leftbarcollapsed))}
+					on:click={() => isLeftBarCollapsed.set(!leftbarcollapsed)}
 				>
 					<svg
 						class=""
@@ -113,5 +113,4 @@
 	</aside>
 
 	<slot />
-	
 </div>
