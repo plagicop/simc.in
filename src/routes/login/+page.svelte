@@ -9,8 +9,11 @@
 	let loginerremail: boolean = false;
 	let loginerrpwd: boolean = false;
 
-	$: $authStore && onMount(() => goto('/dashboard'));
-	isLoading.set(false);
+	$: if ($authStore) {
+        goto('/dashboard')
+    } else {
+		isLoading.set(false);
+	}
 
 	const handleLogin = async () => {
 		isLoading.set(true);

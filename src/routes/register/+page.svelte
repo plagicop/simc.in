@@ -3,10 +3,12 @@
 	import { authHandlers, authStore, isLoading } from '$lib/stores';
 	import toast from 'svelte-french-toast';
 	import Robo from '../../components/Robo.svelte';
-	import { onMount } from 'svelte';
 
-	$: $authStore && onMount(() => goto('/dashboard'));
-	isLoading.set(false);
+	$: if ($authStore) {
+        goto('/dashboard')
+    } else {
+		isLoading.set(false);
+	}
 
 	let name = '';
 	let email = '';

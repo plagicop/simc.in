@@ -38,12 +38,9 @@
 				return response.json();
 			})
 			.then((data) => {
-				console.log(data);
 				simscore = data.similarity_score;
 			});
 	};
-
-	$: console.log(simscore);
 </script>
 
 <div class="w-full flex flex-col px-8 py-8 items-center gap-y-6">

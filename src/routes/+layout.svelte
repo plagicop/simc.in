@@ -4,7 +4,6 @@
 	import { auth } from '../firebase';
 	import { Toaster } from 'svelte-french-toast';
 	import { authStore, isLoading } from '$lib/stores';
-	import { goto } from '$app/navigation';
 
 	isLoading.set(true);
 
@@ -12,10 +11,8 @@
 		auth.onAuthStateChanged((user) => {
 			if (user) {
 				authStore.set(user);
-				goto('dashboard');
 			} else {
 				authStore.set(null);
-				goto('login');
 			}
 		});
 	});

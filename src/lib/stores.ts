@@ -11,21 +11,27 @@ import { writable } from 'svelte/store';
 import { auth } from '../firebase';
 
 export const isLeftBarCollapsed = writable<boolean>(
-	browser ? window.localStorage.getItem('isLeftBarCollapsed') === 'true' : false
+	browser ? window.localStorage.getItem('isLeftBarCollapsed') === 'true': false
 );
 
 isLeftBarCollapsed.subscribe((value) => {
-	if (browser) window.localStorage.setItem('isLeftBarCollapsed', value.toString());
+	browser && window.localStorage.setItem('isLeftBarCollapsed', value.toString());
 });
 
 export const isLoading = writable<boolean>(false);
+
+const cachedAuthStore = browser ? window.localStorage.getItem("authStore") : false
 
 export const authStore = writable<{
 	uid: string;
 	displayName: string | null;
 	email: string | null;
 	emailVerified: boolean;
-} | null>(null);
+} | null>(cachedAuthStore ? JSON.parse(cachedAuthStore) : null);
+
+authStore.subscribe((value) => {
+	browser && window.localStorage.setItem("authStore", JSON.stringify(value));
+})
 
 export const authHandlers = {
 	login: async (email: string, password: string) => {
