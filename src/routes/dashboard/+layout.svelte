@@ -18,7 +18,7 @@
 	<aside
 		class="leftbar {leftbarcollapsed
 			? 'collapsed'
-			: ''} flex flex-col h-screen px-4 py-8 overflow-y-auto bg-white border-r"
+			: ''} flex flex-col h-screen px-4 py-8 overflow-y-auto bg-white border-r shadow-xl"
 	>
 		{#if leftbarcollapsed}
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -43,7 +43,7 @@
 			</div>
 		{/if}
 		<div class="logo mx-auto flex items-center w-full justify-center gap-x-4">
-			<img class="w-auto h-6 sm:h-7" src="https://merakiui.com/images/full-logo.svg" alt="" />
+			<!-- <img class="w-auto h-6 sm:h-7" src="https://merakiui.com/images/full-logo.svg" alt="" /> -->
 			{#if !leftbarcollapsed}
 				<!-- svelte-ignore a11y-click-events-have-key-events -->
 				<div
@@ -82,6 +82,10 @@
 					<div class="route {$page.route.id === "/dashboard" && "active"}" on:click={()=>{goto("/dashboard")}} on:keydown={(e)=>{e.key === "Enter" && goto("/dashboard")}}>
 						<svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
 						<span class="mx-4 font-medium">Dashboard</span>
+					</div>
+					<div class="route {$page.route.id === "/dashboard/multicheck" && "active"}" on:click={()=>{goto("/dashboard/multicheck")}} on:keydown={(e)=>{e.key === "Enter" && goto("/dashboard/settings")}}>
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+						<span class="mx-4 font-medium capitalize">multi check</span>
 					</div>
 					<div class="route {$page.route.id === "/settings" && "active"}" on:click={()=>{goto("/dashboard/settings")}} on:keydown={(e)=>{e.key === "Enter" && goto("/dashboard/settings")}}>
 						<svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
