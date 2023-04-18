@@ -6,6 +6,7 @@ import {
 	signOut,
 	updateProfile
 } from 'firebase/auth';
+import { cachedwritable } from 'svelte-cached-store';
 import toast from 'svelte-french-toast';
 import { writable } from 'svelte/store';
 import { auth } from '../firebase';
@@ -20,18 +21,12 @@ isLeftBarCollapsed.subscribe((value) => {
 
 export const isLoading = writable<boolean>(false);
 
-const cachedAuthStore = browser ? window.localStorage.getItem("authStore") : false
-
-export const authStore = writable<{
+export const authStore = cachedwritable<{
 	uid: string;
 	displayName: string | null;
 	email: string | null;
 	emailVerified: boolean;
-} | null>(cachedAuthStore ? JSON.parse(cachedAuthStore) : null);
-
-authStore.subscribe((value) => {
-	browser && window.localStorage.setItem("authStore", JSON.stringify(value));
-})
+} | null>(null, "plagiauthStore");
 
 export const authHandlers = {
 	login: async (email: string, password: string) => {

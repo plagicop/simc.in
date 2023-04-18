@@ -9,22 +9,20 @@
 	$: $authStore === null && onMount(() => goto('/login'));
 	isLoading.set(false);
 
-	let leftbarcollapsed: boolean;
-
-	$: leftbarcollapsed = $isLeftBarCollapsed ? true : false;
+	$: console.log($isLeftBarCollapsed)
 </script>
 
 <div class="grid main">
 	<aside
-		class="leftbar {leftbarcollapsed
+		class="leftbar {$isLeftBarCollapsed
 			? 'collapsed'
 			: ''} flex flex-col h-screen px-4 py-8 overflow-y-auto bg-white border-r"
 	>
-		{#if leftbarcollapsed}
+		{#if $isLeftBarCollapsed}
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<div
 				class="w-full flex justify-center p-2 hover:bg-gray-100 rounded-lg cursor-pointer"
-				on:click={() => isLeftBarCollapsed.set(!leftbarcollapsed)}
+				on:click={() => isLeftBarCollapsed.set(!$isLeftBarCollapsed)}
 			>
 				<svg
 					class=""
@@ -44,11 +42,11 @@
 		{/if}
 		<div class="logo mx-auto flex items-center w-full justify-center gap-x-4">
 			<img class="w-auto h-6 sm:h-7" src="https://merakiui.com/images/full-logo.svg" alt="" />
-			{#if !leftbarcollapsed}
+			{#if !$isLeftBarCollapsed}
 				<!-- svelte-ignore a11y-click-events-have-key-events -->
 				<div
 					class="flex justify-center p-2 hover:bg-gray-100 rounded-lg cursor-pointer"
-					on:click={() => isLeftBarCollapsed.set(!leftbarcollapsed)}
+					on:click={() => isLeftBarCollapsed.set(!$isLeftBarCollapsed)}
 				>
 					<svg
 						class=""
