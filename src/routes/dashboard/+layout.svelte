@@ -42,7 +42,7 @@
 		{/if}
 		<div class="logo mx-auto flex items-center w-full justify-center gap-x-4">
 			<!-- <img class="w-auto h-6 sm:h-7" src="https://merakiui.com/images/full-logo.svg" alt="" /> -->
-			{#if !leftbarcollapsed}
+			{#if !$isLeftBarCollapsed}
 				<!-- svelte-ignore a11y-click-events-have-key-events -->
 				<div
 					class="flex justify-center p-2 hover:bg-gray-100 rounded-lg cursor-pointer"
