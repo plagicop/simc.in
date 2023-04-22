@@ -2,16 +2,18 @@
 	import { goto } from '$app/navigation';
 	import { authHandlers, authStore, isLoading } from '$lib/stores';
 	import { onMount } from 'svelte';
-	import Robo from '../../components/Robo.svelte';
+	import NormalRobo from '../../components/Robo/NormalRobo.svelte';
 
 	let email: string = '';
 	let password: string = '';
 	let loginerremail: boolean = false;
 	let loginerrpwd: boolean = false;
+	let closedeye: boolean = true;
+	let handsoneye: boolean = false;
 
 	$: if ($authStore) {
-        goto('/dashboard')
-    } else {
+		goto('/dashboard');
+	} else {
 		isLoading.set(false);
 	}
 
@@ -41,7 +43,7 @@
 </script>
 
 <div class="flex flex-col w-full h-full items-center justify-center">
-	<Robo />
+	<NormalRobo {closedeye} {handsoneye} />
 	<div
 		class="container bg-white shadow flex flex-col sm:max-w-screen-sm px-6 py-6 pb-10 items-center rounded-lg"
 	>
@@ -72,6 +74,7 @@
 					bind:value={email}
 					on:input={() => {
 						loginerremail = false;
+						closedeye = email ? false : true
 					}}
 					class="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40 {loginerremail
 						? 'border-red-500'
@@ -79,9 +82,9 @@
 					placeholder="Email address"
 				/>
 			</div>
-			<label for="pwd" class="mb-3 ml-1 block text-base font-medium text-gray-700 mt-4"
-				>Password</label
-			>
+			<label for="pwd" class="mb-3 ml-1 block text-base font-medium text-gray-700 mt-4">
+				Password
+			</label>
 			<div class="relative flex items-center">
 				<span class="absolute">
 					<svg
@@ -104,6 +107,12 @@
 					bind:value={password}
 					on:input={() => {
 						loginerrpwd = false;
+					}}
+					on:focus={() => {
+						handsoneye = true
+					}}
+					on:blur={() => {
+						handsoneye = false
 					}}
 					class="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40 {loginerrpwd
 						? 'border-red-500'

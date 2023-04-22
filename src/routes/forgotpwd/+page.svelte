@@ -2,14 +2,15 @@
 	import { toast } from 'svelte-french-toast';
 	import { sendPasswordResetEmail } from 'firebase/auth';
 	import { auth } from '../../firebase';
-	import Robo from '../../components/Robo.svelte';
+	import NormalRobo from '../../components/Robo/NormalRobo.svelte';
 
 	let email: string = '';
+	let closedeye: boolean = false;
 </script>
 
 <div class="flex flex-col w-full h-full items-center justify-center">
 	<!-- <Logo classes="w-64 mx-auto mb-8" /> -->
-	<Robo />
+	<NormalRobo closedeye={closedeye} handsoneye={false} />
 	<div
 		class="container bg-white shadow flex flex-col sm:max-w-screen-sm px-6 py-6 pb-10 items-center rounded-lg"
 	>
@@ -53,6 +54,9 @@
 					bind:value={email}
 					class="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
 					placeholder="Email address"
+					on:input={() => {
+						closedeye = email ? false : true
+					}}
 				/>
 			</div>
 			<div class="mt-6">

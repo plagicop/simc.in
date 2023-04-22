@@ -2,7 +2,7 @@
 	import { goto } from '$app/navigation';
 	import { authHandlers, authStore, isLoading } from '$lib/stores';
 	import toast from 'svelte-french-toast';
-	import Robo from '../../components/Robo.svelte';
+	import NormalRobo from '../../components/Robo/NormalRobo.svelte';
 
 	$: if ($authStore) {
         goto('/dashboard')
@@ -16,6 +16,8 @@
 	let cpassword = '';
 	let loginerremail = false;
 	let loginerrpwd = false;
+	let handsoneye = false
+	let closedeye = true;
 
 	const handleRegister = async () => {
 		if (email === '') {
@@ -41,7 +43,7 @@
 
 <div class="flex flex-col w-full items-center justify-center h-full">
 	<!-- <Logo classes="w-64 mx-auto mb-8" /> -->
-	<Robo />
+	<NormalRobo closedeye={closedeye} handsoneye={handsoneye} />
 	<div
 		class="container bg-white shadow flex flex-col sm:max-w-screen-sm px-6 py-6 items-center rounded-lg"
 	>
@@ -73,6 +75,9 @@
 					bind:value={name}
 					class="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
 					placeholder="Enter Your Name"
+					on:input={() => {
+						closedeye = name ? false : true
+					}}
 				/>
 			</div>
 			<label for="pwd" class="mb-3 ml-1 block text-base font-medium text-gray-700 mt-4"
@@ -133,6 +138,12 @@
 					on:input={() => {
 						loginerrpwd = false;
 					}}
+					on:focus={() => {
+						handsoneye = true
+					}}
+					on:blur={() => {
+						handsoneye = false
+					}}
 					class="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40 {loginerrpwd
 						? 'border-red-500'
 						: ''}"
@@ -164,6 +175,12 @@
 					bind:value={cpassword}
 					on:input={() => {
 						loginerrpwd = false;
+					}}
+					on:focus={() => {
+						handsoneye = true
+					}}
+					on:blur={() => {
+						handsoneye = false
 					}}
 					class="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40 {loginerrpwd
 						? 'border-red-500'
