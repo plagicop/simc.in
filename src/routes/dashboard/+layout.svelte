@@ -8,11 +8,9 @@
 
 	$: $authStore === null && onMount(() => goto('/login'));
 	isLoading.set(false);
-
-	$: console.log($isLeftBarCollapsed)
 </script>
 
-<div class="grid main">
+<div class="grid main w-screen">
 	<aside
 		class="leftbar {$isLeftBarCollapsed
 			? 'collapsed'

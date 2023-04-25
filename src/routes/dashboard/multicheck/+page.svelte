@@ -49,12 +49,40 @@
 		});
 		e.target.value = '';
 	};
+
+	const handleSimilarityCheck = () => {
+		const fbody: any = {
+			noofdocs: files.length
+		};
+		files.forEach((file, i) => {
+			fbody[`doc${i}`] = {
+				name: file.name,
+				type: file.type,
+				base64: file.base64String
+			};
+		});
+		fetch('http://127.0.0.1:5000/multisimilarity', {
+			method: 'POST',
+			headers: {
+				Accept: 'application/json',
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(fbody)
+		})
+			.then((response) => {
+				return response.json();
+			})
+			.then((data) => {
+				result = data.data
+			});
+	};
 </script>
 
-<div class="w-full flex flex-col px-8 py-8 items-center gap-y-6">
+<div class="w-full flex flex-col px-8 py-8 items-center gap-y-6 overflow-auto">
 	<div class="text-xl font-semibold tracking-wide">Multi File Similarity Checker</div>
 
 	{#if result}
+		<h3 class="text-xl">Results</h3>
 		<div class="grid grid-cols-3 w-1/2 gap-y-6">
 			{#each result as i}
 				<div class="flex border items-center w-full px-6 py-4 rounded-lg justify-between">
@@ -65,7 +93,7 @@
 				</div>
 				<div class="flex items-center justify-center gap-2">
 					<span class="border-t w-full" />
-					{i.similarity}%
+					{i.similarity * 100}%
 					<span class="border-t w-full" />
 				</div>
 				<div class="flex border items-center w-full px-6 py-4 rounded-lg justify-between">
@@ -112,12 +140,12 @@
 			multiple
 			on:input={onFileInputHandler}
 		/>
-        <Button on:click={
-            () => {
-                console.log("ok")
-            }
-        }>
-            Check Similarity
-        </Button>
+		<Button
+			on:click={() => {
+				handleSimilarityCheck()
+			}}
+		>
+			Check Similarity
+		</Button>
 	{/if}
 </div>

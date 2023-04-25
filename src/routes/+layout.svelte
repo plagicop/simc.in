@@ -24,7 +24,7 @@
 		<div class="custom-loader" />
 	</div>
 {/if}
-<div class="h-screen overflow-hidden {$authStore === null ?? 'hidden'}">
+<div class="flex h-screen overflow-hidden {$authStore === null ?? 'hidden'}">
 	<slot />
 </div>
 
