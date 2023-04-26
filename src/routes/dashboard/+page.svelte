@@ -41,7 +41,7 @@
 				return response.json();
 			})
 			.then((data) => {
-				simscore = data.similarity_score;
+				simscore = data.similarity_score * 100;
 			});
 	};
 </script>
@@ -167,6 +167,6 @@
 		</Button>
 	{:else}
 		<div class="text-2xl font-semibold">Similarity Score</div>
-		<span class="text-xl font-medium">{simscore}</span>
+		<span class="text-xl font-medium">{simscore}%</span>
 	{/if}
 </div>

@@ -64,11 +64,12 @@
 			{/if}
 		</div>
 		<div class="profile flex flex-col items-center mt-6 -mx-2">
-			<img
+			<!-- <img
 				class="object-cover w-24 h-24 mx-2 rounded-full"
-				src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+				src="https://www.sparshkaushik.com/assets/img/apple-touch-icon.png"
 				alt="avatar"
-			/>
+			/> -->
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
 			<h4 class="mx-2 mt-2 font-medium text-gray-800">{$authStore?.displayName}</h4>
 			<p class="mx-2 mt-1 text-sm font-medium text-gray-600">{$authStore?.email}</p>
 		</div>
