@@ -21,6 +21,8 @@ isLeftBarCollapsed.subscribe((value) => {
 
 export const isLoading = writable<boolean>(false);
 
+export const pageTitle = writable<string>("");
+
 export const authStore = cachedwritable<{
 	uid: string;
 	displayName: string | null;
@@ -53,7 +55,7 @@ export const authHandlers = {
 			})
 			.then((user) => {
 				updateProfile(user, {
-					displayName: name
+					displayName: name,
 				}).then(() => {
 					sendEmailVerification(user).then(() => {
 						toast.success('Email verification sent! Please check your inbox.');

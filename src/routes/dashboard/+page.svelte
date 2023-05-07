@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { pageTitle } from '$lib/stores';
 	import type { FileBlob, SingleFetchBody } from '$lib/types';
 	import { blobToBase64 } from '$lib/utils';
 	import Button from '../../components/Button.svelte';
@@ -9,6 +10,8 @@
 	let doc1: string, doc2: string;
 	let doc1file: FileBlob, doc2file: FileBlob;
 	let simscore: number | null = null;
+
+	pageTitle.set("Similarity Checker")
 
 	const handleCheck = () => {
 		const fbody: SingleFetchBody = {
@@ -48,8 +51,7 @@
 
 <div class="w-full flex flex-col px-8 py-8 items-center gap-y-6">
 	{#if simscore == null}
-		<div class="text-2xl font-semibold">Similarity Checker</div>
-		<div class="w-full grid dashmain gap-x-8">
+		<div class="w-full grid dashmain gap-x-8 mt-8">
 			<div class="w-full flex flex-col items-center gap-y-4">
 				{#if !doc1file}
 					<div class="w-full flex flex-col">

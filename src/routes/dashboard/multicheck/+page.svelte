@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { pageTitle } from '$lib/stores';
 	import type { FileBlob } from '$lib/types';
 	import { blobToBase64 } from '$lib/utils';
 	import Button from '../../../components/Button.svelte';
@@ -13,6 +14,8 @@
 		file2: string;
 		similarity: number;
 	}[];
+
+	pageTitle.set("Multi Similarity Checker")
 
 	// result = [
 	// 	{
@@ -79,8 +82,6 @@
 </script>
 
 <div class="w-full flex flex-col px-8 py-8 items-center gap-y-6 overflow-auto">
-	<div class="text-xl font-semibold tracking-wide">Multi File Similarity Checker</div>
-
 	{#if result}
 		<h3 class="text-xl">Results</h3>
 		<div class="grid grid-cols-3 w-1/2 gap-y-6">
