@@ -3,15 +3,16 @@
 	import { sendPasswordResetEmail } from 'firebase/auth';
 	import { auth } from '../../firebase';
 	import NormalRobo from '../../components/Robo/NormalRobo.svelte';
+	import FlyIn from '../../components/Transitions/FlyIn.svelte';
 
 	let email: string = '';
 	let closedeye: boolean = false;
 </script>
 
-<div class="flex flex-col w-full h-full items-center justify-center">
+<div class="flex flex-col w-screen h-screen items-center justify-center">
 	<!-- <Logo classes="w-64 mx-auto mb-8" /> -->
 	<NormalRobo closedeye={closedeye} handsoneye={false} />
-	<div
+	<FlyIn
 		class="container bg-white shadow flex flex-col sm:max-w-screen-sm px-6 py-6 pb-10 items-center rounded-lg"
 	>
 		<form
@@ -72,5 +73,5 @@
 				</div>
 			</div>
 		</form>
-	</div>
+	</FlyIn>
 </div>
