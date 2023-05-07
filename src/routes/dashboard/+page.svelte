@@ -32,7 +32,7 @@
 		} else {
 			fbody.doc2 = doc2;
 		}
-		fetch('http://127.0.0.1:5000/similarity', {
+		fetch('https://simc.karoon.ga/similarity', {
 			method: 'POST',
 			headers: {
 				Accept: 'application/json',
