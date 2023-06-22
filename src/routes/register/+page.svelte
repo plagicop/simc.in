@@ -1,6 +1,6 @@
 <script>
 	import { goto } from '$app/navigation';
-	import { authHandlers, authStore, isLoading } from '$lib/stores';
+	import { authHandlers, authStore, isLoading, pageTitle } from '$lib/stores';
 	import toast from 'svelte-french-toast';
 	import NormalRobo from '../../components/Robo/NormalRobo.svelte';
 	import FlyIn from '../../components/Transitions/FlyIn.svelte';
@@ -40,6 +40,8 @@
 		}
 		await authHandlers.register(name, email, password);
 	};
+
+	pageTitle.set('Register');
 </script>
 
 <div class="flex flex-col w-screen items-center justify-center h-screen">

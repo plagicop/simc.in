@@ -3,7 +3,8 @@
 	import '../app.css';
 	import { auth } from '../firebase';
 	import { Toaster } from 'svelte-french-toast';
-	import { authStore, isLoading } from '$lib/stores';
+	import { authStore, isLoading, pageTitle } from '$lib/stores';
+	import { browser } from '$app/environment';
 
 	isLoading.set(true);
 
@@ -16,6 +17,8 @@
 			}
 		});
 	});
+
+	$: if (browser) document.title = $pageTitle;
 </script>
 
 <Toaster />

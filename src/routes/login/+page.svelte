@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { authHandlers, authStore, isLoading } from '$lib/stores';
-	import { onMount } from 'svelte';
+	import { authHandlers, authStore, isLoading, pageTitle } from '$lib/stores';
 	import NormalRobo from '../../components/Robo/NormalRobo.svelte';
 	import FlyIn from '../../components/Transitions/FlyIn.svelte';
 
@@ -41,6 +40,8 @@
 		}
 		isLoading.set(false);
 	};
+
+	pageTitle.set('Login');
 </script>
 
 <div class="flex flex-col w-screen h-screen items-center justify-center">

@@ -2,6 +2,7 @@
 	import { pageTitle } from '$lib/stores';
 	import type { FileBlob } from '$lib/types';
 	import { blobToBase64 } from '$lib/utils';
+	import { toast } from 'svelte-french-toast';
 	import Button from '../../../components/Button.svelte';
 	import IconButton from '../../../components/IconButton.svelte';
 	import CrossIcon from '../../../components/Icons/CrossIcon.svelte';
@@ -64,7 +65,7 @@
 				base64: file.base64String
 			};
 		});
-		fetch('https://simc.karoon.ga/multisimilarity', {
+		fetch('http://127.0.0.1:5000/multisimilarity', {
 			method: 'POST',
 			headers: {
 				Accept: 'application/json',
@@ -76,6 +77,10 @@
 				return response.json();
 			})
 			.then((data) => {
+				if (data.status === 'error') {
+					toast.error(data.error);
+					return;
+				}
 				result = data.data
 			});
 	};

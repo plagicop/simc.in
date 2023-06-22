@@ -12,7 +12,7 @@ import { writable } from 'svelte/store';
 import { auth } from '../firebase';
 
 export const isLeftBarCollapsed = writable<boolean>(
-	browser ? window.localStorage.getItem('isLeftBarCollapsed') === 'true': false
+	browser ? window.localStorage.getItem('isLeftBarCollapsed') === 'true' : false
 );
 
 isLeftBarCollapsed.subscribe((value) => {
@@ -21,14 +21,14 @@ isLeftBarCollapsed.subscribe((value) => {
 
 export const isLoading = writable<boolean>(false);
 
-export const pageTitle = writable<string>("");
+export const pageTitle = writable<string>('');
 
 export const authStore = cachedwritable<{
 	uid: string;
 	displayName: string | null;
 	email: string | null;
 	emailVerified: boolean;
-} | null>(null, "plagiauthStore");
+} | null>(null, 'plagiauthStore');
 
 export const authHandlers = {
 	login: async (email: string, password: string) => {
@@ -55,7 +55,7 @@ export const authHandlers = {
 			})
 			.then((user) => {
 				updateProfile(user, {
-					displayName: name,
+					displayName: name
 				}).then(() => {
 					sendEmailVerification(user).then(() => {
 						toast.success('Email verification sent! Please check your inbox.');
