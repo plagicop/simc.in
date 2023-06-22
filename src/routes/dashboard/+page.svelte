@@ -32,7 +32,7 @@
 		} else {
 			fbody.doc2 = doc2;
 		}
-		fetch('https://simc.karoon.ga/similarity', {
+		fetch('https://simc.sparsh.eu.org/similarity', {
 			method: 'POST',
 			headers: {
 				Accept: 'application/json',

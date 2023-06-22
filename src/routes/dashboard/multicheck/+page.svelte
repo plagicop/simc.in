@@ -65,7 +65,7 @@
 				base64: file.base64String
 			};
 		});
-		fetch('http://127.0.0.1:5000/multisimilarity', {
+		fetch('http://simc.sparsh.eu.org/multisimilarity', {
 			method: 'POST',
 			headers: {
 				Accept: 'application/json',
@@ -110,6 +110,14 @@
 				</div>
 			{/each}
 		</div>
+		<Button
+			on:click={() => {
+				result = undefined;
+				files = [];
+			}}
+		>
+			Reset
+		</Button>
 	{:else}
 		<div class="flex flex-col gap-2 w-full items-center mt-4">
 			{#each files as file, i}
