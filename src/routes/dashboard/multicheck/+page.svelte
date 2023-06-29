@@ -65,7 +65,7 @@
 				base64: file.base64String
 			};
 		});
-		fetch('http://simc.sparsh.eu.org/multisimilarity', {
+		fetch('https://simc.touchify.ml/multisimilarity', {
 			method: 'POST',
 			headers: {
 				Accept: 'application/json',
